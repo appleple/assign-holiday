@@ -1,0 +1,16 @@
+table {
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  border: solid 2px #333;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: dashed 1px #333;
+}
+
+th {
+  width: 1%;
+  white-space: nowrap;
+}
