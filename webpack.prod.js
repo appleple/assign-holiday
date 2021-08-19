@@ -1,23 +1,37 @@
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-  mode: "production",
-  target: ["web", "es5"],
+  mode: 'production',
+  target: ['web', 'es5'],
   entry: {
-    'event-maker': './src/index',
+    'assign-holiday': './src/index',
+    'jquery-assign-holiday': './src/adaptor/jquery',
   },
   output: {
     path: `${__dirname}/dist/`,
-    filename: "[name].js"
+    filename: '[name].js',
+    library: ['AssignHoliday'],
+    libraryExport: 'default',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
       {
-        test: /\.(js|ts|tsx)$/,
+        test: /\.js$/,
         include: /src\/js/,
         use: {
           loader: 'babel-loader',
         },
+      },
+      {
+        test: /\.css/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: { url: false }
+          }
+        ]
       },
     ],
   },
