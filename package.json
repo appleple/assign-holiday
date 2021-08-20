@@ -1,6 +1,6 @@
 {
   "name": "assign-holiday",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "JavaScript library to added class to holiday element in a calendar",
   "main": "lib/index.js",
   "scripts": {

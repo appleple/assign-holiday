@@ -1,4 +1,5 @@
 # Assign Holiday
+[![CICD](https://github.com/appleple/assign-holiday/actions/workflows/release.yml/badge.svg)](https://github.com/appleple/assign-holiday/actions/workflows/release.yml)  
 Simple Liblary to added class to holiday element in a calendar
 
 
