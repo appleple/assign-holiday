@@ -1,10 +1,12 @@
 const ESLintPlugin = require('eslint-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = {
   mode: 'production',
   target: ['web', 'es5'],
   entry: {
-    'assign-holiday': './src/index',
+    'assign-holiday': ['./src/index', './src/tooltip.css'],
     'jquery-assign-holiday': './src/adaptor/jquery',
   },
   output: {
@@ -26,7 +28,9 @@ module.exports = {
       {
         test: /\.css/,
         use: [
-          'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
           {
             loader: 'css-loader',
             options: { url: false }
@@ -44,6 +48,9 @@ module.exports = {
       emitWarning: true,
       failOnError: true,
       fix: true,
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
     }),
   ],
 };

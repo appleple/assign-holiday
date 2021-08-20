@@ -2,8 +2,6 @@ import {
   addClass, getTargetElement, formatDate, insertAdjacentString, sanitize
 } from './util';
 
-import './tooltip.css';
-
 const defaultOption = {
   holidayClass: 'assign-holiday',
   dateAttribute: 'data-assign-holiday-date',
