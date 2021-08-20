@@ -7,7 +7,7 @@
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  display: inline-block;
+  display: none;
   left: 50%;
   transform: translateX(-50%);
   top: -35px;
@@ -35,4 +35,5 @@
 .assign-holiday-tooltip:hover .assign-holiday-tooltip-text {
   opacity: 1;
   visibility: visible;
+  display: inline-block;
 }

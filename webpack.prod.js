@@ -1,13 +1,15 @@
 const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 module.exports = {
   mode: 'production',
   target: ['web', 'es5'],
   entry: {
-    'assign-holiday': ['./src/index', './src/tooltip.css'],
+    'assign-holiday': './src/index',
     'jquery-assign-holiday': './src/adaptor/jquery',
+    'assign-holiday-tooltip': './src/tooltip.css',
   },
   output: {
     path: `${__dirname}/dist/`,
@@ -33,7 +35,9 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            options: { url: false }
+            options: {
+              url: false,
+            }
           }
         ]
       },
@@ -49,8 +53,16 @@ module.exports = {
       failOnError: true,
       fix: true,
     }),
+    new RemoveEmptyScriptsPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: 'assign-holiday.css',
     }),
   ],
+  optimization: {
+    minimizer: [
+      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+      '...',
+      new CssMinimizerPlugin(),
+    ],
+  },
 };
