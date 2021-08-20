@@ -63,7 +63,7 @@ assignHoliday.run({
   '2021-12-24': 'Closed on Monday.',
   '2021-12-25': {
     title: 'Closed for Christmas.',
-    className: 'is-christmas',
+    className: 'is-christmas', // This classname is only applicable on 2021-12-25.
   }
 })
 ```
@@ -94,7 +94,7 @@ $(function () {
     '2021-12-24': 'Closed on Monday.',
     '2021-12-25': {
       title: 'Closed for Christmas.',
-      className: 'is-christmas',
+      className: 'is-christmas', // This classname is only applicable on 2021-12-25.
     }
   })
 });
