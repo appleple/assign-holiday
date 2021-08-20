@@ -19,12 +19,14 @@ yarn add assign-holiday
 #### via cdn
 
 ```html
+<link rel="stylesheet" href="https://unpkg.com/assign-holiday@latest/dist/assign-holiday.css">
 <script src="https://unpkg.com/assign-holiday@latest/dist/assign-holiday.js"></script>
 ```
 
 ### jQuery plugin
 #### via cdn
 ```html
+<link rel="stylesheet" href="https://unpkg.com/assign-holiday@latest/dist/assign-holiday.css">
 <script src="https://unpkg.com/assign-holiday@latest/dist/jquery-assign-holiday.js"></script>
 ```
 
@@ -43,7 +45,12 @@ yarn add assign-holiday
       </td>
     </tr>
     <tr data-assign-holiday-date="2021-12-02">
-      <th>2<span class="assign-holiday-week-label">Teu.</span></th>
+      <th>2<span class="assign-holiday-week-label">Thu.</span></th>
+      <td class="assign-holiday-title">
+      </td>
+    </tr>
+    <tr data-assign-holiday-date="2021-12-03">
+      <th>2<span class="assign-holiday-week-label">Fri.</span></th>
       <td class="assign-holiday-title">
       </td>
     </tr>
@@ -54,16 +61,17 @@ yarn add assign-holiday
 
 ```javascript
 import AssignHoliday from 'assgin-holiday';
+import "assign-holiday/dist/assign-holiday.css"; // if use tooltip, you need to install css
 
 const assignHoliday = new AssignHoliday('.js-assign-holiday');
 assignHoliday.run({
-  '2021-12-03': 'Closed on Monday.',
-  '2021-12-10': 'Closed on Monday.',
-  '2021-12-17': 'Closed on Monday.',
-  '2021-12-24': 'Closed on Monday.',
-  '2021-12-25': {
-    title: 'Closed for Christmas.',
-    className: 'is-christmas', // This classname is only applicable on 2021-12-25.
+  '2021-12-06': 'Closed on Monday.',
+  '2021-12-13': 'Closed on Monday.',
+  '2021-12-20': 'Closed on Monday.',
+  '2021-12-27': 'Closed on Monday.',
+  '2021-12-24': {
+    title: 'Closed for Christmas Eve.',
+    className: 'is-christmas-eve', // This classname is only applicable on 2021-12-25.
   }
 })
 ```
@@ -71,6 +79,7 @@ assignHoliday.run({
 #### Example of national holidays
 ```javascript
 import AssignHoliday from 'assgin-holiday';
+import "assign-holiday/dist/assign-holiday.css"; // if use tooltip, you need to install css
 
 fetch('https://holidays-jp.github.io/api/v1/date.json')
       .then(res => res.json())
@@ -88,13 +97,13 @@ $(function () {
   const assignHoliday = $('.js-assgin-holiday').assignHoliday();
 
   assignHoliday.run({
-    '2021-12-03': 'Closed on Monday.',
-    '2021-12-10': 'Closed on Monday.',
-    '2021-12-17': 'Closed on Monday.',
-    '2021-12-24': 'Closed on Monday.',
-    '2021-12-25': {
-      title: 'Closed for Christmas.',
-      className: 'is-christmas', // This classname is only applicable on 2021-12-25.
+    '2021-12-06': 'Closed on Monday.',
+    '2021-12-13': 'Closed on Monday.',
+    '2021-12-20': 'Closed on Monday.',
+    '2021-12-27': 'Closed on Monday.',
+    '2021-12-24': {
+      title: 'Closed for Christmas Eve.',
+      className: 'is-christmas-eve', // This classname is only applicable on 2021-12-25.
     }
   })
 });
