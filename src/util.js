@@ -6,14 +6,6 @@ export const addClass = (element, className) => {
   }
 };
 
-export const removeClass = (element, className) => {
-  if (element.classList) {
-    element.classList.remove(className);
-  } else {
-    element.className = element.className.replace(new RegExp(`(^|\\b)${className.split(' ').join('|')}(\\b|$)`, 'gi'), ' ');
-  }
-};
-
 const hasClass = (el, className) => {
   if (el.classList) {
     return el.classList.contains(className);
