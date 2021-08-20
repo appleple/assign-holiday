@@ -88,14 +88,13 @@ $(function () {
   const assignHoliday = $('.js-assgin-holiday').assignHoliday();
 
   assignHoliday.run({
-    '2021-08-04': '定休日',
-    '2021-08-11': '定休日',
-    '2021-08-18': {
-      title: '定休日.（任意クラス指定）',
-      className: 'hoge',
-    },
-    '2021-08-20': {
-      title: '定休日（オブジェクトでタイトルを指定）',
+    '2021-12-03': 'Closed on Monday.',
+    '2021-12-10': 'Closed on Monday.',
+    '2021-12-17': 'Closed on Monday.',
+    '2021-12-24': 'Closed on Monday.',
+    '2021-12-25': {
+      title: 'Closed for Christmas.',
+      className: 'is-christmas',
     }
   })
 });
@@ -120,7 +119,7 @@ $.get('https://holidays-jp.github.io/api/v1/date.json')
 | addHolidayLabel | Whether to add holiday label. | true |
 | holidayLabel | Label to be replaced or inserted with labels of days of the week set in weekLabel. | 'Hol.' |
 | holidayLabelPosition | Position to insert the holiday label into the label for the set day of the week. You can select 'replace', 'before' or 'after'. | 'replace' |
-| weekLabelClass | Classname to be added to the element to which the holiday label will be replaced or inserted. | 'assign-holiday-today' |
+| weekLabelClass | Classname to be added to the element to which the holiday label will be replaced or inserted. | 'assign-holiday-week-label' |
 | weekLabels | Day of the week labels which replaced by holiday label or inserted before and after holiday label. | ['Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'] |
 | holidayTooltipClass | Classname to be added to the element to which the tooltip will be added. | 'assign-holiday-tooltip' |
 | holidayTooltipTextClass | Classname to be added to tooltip text element. | 'assign-holiday-tooltip-text' |
