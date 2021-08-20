@@ -24,15 +24,16 @@ export default class AssignHoliday {
   constructor(elem, option) {
     this.option = { ...defaultOption, ...option };
     this.elements = typeof elem === 'string' ? document.querySelectorAll(elem) : elem;
+    this.data = {};
   }
 
-  run(holidayData) {
-    const data = holidayData;
+  run(data) {
+    this.data = data || this.data;
     [].map.call(this.elements, (element) => {
       const targets = element.querySelectorAll(`[${this.option.dateAttribute}]`);
       [].map.call(targets, (target) => {
         const date = target.getAttribute(this.option.dateAttribute);
-        const isHoliday = this.isHoliday(date, data);
+        const isHoliday = this.isHoliday(date);
         const title = sanitize(typeof isHoliday[1] === 'object' ? isHoliday[1].title : isHoliday[1]);
         if (isHoliday[0]) {
           const className = typeof isHoliday[1] === 'object' && isHoliday[1].className ? isHoliday[1].className : this.option.holidayClass;
@@ -61,10 +62,10 @@ export default class AssignHoliday {
     });
   }
 
-  isHoliday(date, data) {
-    for (const i of Object.keys(data)) {
+  isHoliday(date) {
+    for (const i of Object.keys(this.data)) {
       if (i === date) {
-        return [true, data[i]];
+        return [true, this.data[i]];
       }
     }
 
@@ -89,7 +90,6 @@ export default class AssignHoliday {
         break;
       case 'before':
       case 'after':
-        // eslint-disable-next-line no-case-declarations
         const i = labelElem.textContent.search(regex);
         if (i === -1) return;
         labelElem.textContent = insertAdjacentString(labelElem.textContent, this.option.holidayLabelPosition, i, this.option.holidayLabel);

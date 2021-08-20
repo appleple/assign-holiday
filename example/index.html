@@ -456,6 +456,7 @@
         </tr>
       </tbody>
     </table>
+    <button type="button" id="js-btn">カレンダー更新ボタン</button>
   </div>
   <script src="../dist/assign-holiday.js"></script>
   <script>
@@ -470,36 +471,42 @@
         $('.js-assgin-public-holiday').assignHoliday().run(data);
       })
 
-    // const element = document.querySelectorAll('.js-assgin-holiday');
+    const element = document.querySelectorAll('.js-assgin-holiday');
 
-    // const assignHoliday = new AssignHoliday(element);
-    // assignHoliday.run({
-    //   '2021-08-04': '定休Sun.',
-    //   '2021-08-11': '定休Sun.',
-    //   '2021-08-18': {
-    //     title: '定休Sun.（任意クラス指定）',
-    //     className: 'hoge',
-    //   },
-    //   '2021-08-20': {
-    //     title: '定休Sun.（オブジェクトでタイトルを指定）',
-    //   }
-    // })
+    const assignHoliday = new AssignHoliday(element);
+    assignHoliday.run({
+      '2021-08-04': '定休Sun.',
+      '2021-08-11': '定休Sun.',
+      '2021-08-18': {
+        title: '定休Sun.（任意クラス指定）',
+        className: 'hoge',
+      },
+      '2021-08-20': {
+        title: '定休Sun.（オブジェクトでタイトルを指定）',
+      }
+    })
 
-    $(function () {
-      const assignHoliday = $('.js-assgin-holiday').assignHoliday();
+    document.getElementById('js-btn').addEventListener('click', () => {
+      console.log('カレンダー更新します!');
+      assignHoliday.run();
+    })
 
-      assignHoliday.run({
-        '2021-08-04': '定休日',
-        '2021-08-11': '定休日',
-        '2021-08-18': {
-          title: '定休日.（任意クラス指定）',
-          className: 'hoge',
-        },
-        '2021-08-20': {
-          title: '定休日（オブジェクトでタイトルを指定）',
-        }
-      })
-    });
+    // $(function () {
+    //   const assignHoliday = $('.js-assgin-holiday').assignHoliday();
+
+    //   assignHoliday.run({
+    //     '2021-08-04': '定休日',
+    //     '2021-08-11': '定休日',
+    //     '2021-08-18': {
+    //       title: '定休日.（任意クラス指定）',
+    //       className: 'hoge',
+    //     },
+    //     '2021-08-20': {
+    //       title: '定休日（オブジェクトでタイトルを指定）',
+    //     }
+    //   })
+
+    // });
 
 
   </script>
