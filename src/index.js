@@ -7,6 +7,7 @@ const defaultOption = {
   dateAttribute: 'data-assign-holiday-date',
   holidayTitleClass: 'assign-holiday-title',
   holidayTitleTag: '',
+  holidayTitleAppendClass: '',
   today: false,
   todayClass: 'assign-holiday-today',
   addHolidayLabel: true,
@@ -77,7 +78,7 @@ export default class AssignHoliday {
 
   addHolidayTitle(titleElem, title) {
     const tag = sanitize(this.option.holidayTitleTag);
-    const html = tag ? `<${tag}>${title}</${tag}>` : title;
+    const html = tag ? `<${tag}${this.option.holidayTitleAppendClass ? ` class="${this.option.holidayTitleAppendClass}"` : ''}>${title}</${tag}>` : title;
     titleElem.insertAdjacentHTML('beforeend', html);
   }
 
