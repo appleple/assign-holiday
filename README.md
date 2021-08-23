@@ -1,6 +1,8 @@
 # Assign Holiday
-[![CICD](https://github.com/appleple/assign-holiday/actions/workflows/release.yml/badge.svg)](https://github.com/appleple/assign-holiday/actions/workflows/release.yml)  
-Simple Liblary to added class to holiday element in a calendar
+[![CICD](https://github.com/appleple/assign-holiday/actions/workflows/release.yml/badge.svg)](https://github.com/appleple/assign-holiday/actions/workflows/release.yml)
+[![npm version](https://badge.fury.io/js/assign-holiday.svg)](https://badge.fury.io/js/assign-holiday)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+Simple Liblary to added class Attribute to holiday element in a calendar
 
 
 ## Installation
@@ -62,25 +64,25 @@ yarn add assign-holiday
 
 ```javascript
 import AssignHoliday from 'assgin-holiday';
-import "assign-holiday/dist/assign-holiday.css"; // if use tooltip, you need to install css
+import "assign-holiday/dist/assign-holiday.css"; // if use tooltip, you need to import css
 
 const assignHoliday = new AssignHoliday('.js-assign-holiday');
 assignHoliday.run({
   '2021-12-06': 'Closed on Monday.',
   '2021-12-13': 'Closed on Monday.',
   '2021-12-20': 'Closed on Monday.',
-  '2021-12-27': 'Closed on Monday.',
   '2021-12-24': {
     title: 'Closed for Christmas Eve.',
-    className: 'is-christmas-eve', // This classname is only applicable on 2021-12-25.
-  }
+    className: 'is-christmas-eve', // This classname is only applicable on 2021-12-24.
+  },
+  '2021-12-27': 'Closed on Monday.',
 })
 ```
 
 #### Example of national holidays
 ```javascript
 import AssignHoliday from 'assgin-holiday';
-import "assign-holiday/dist/assign-holiday.css"; // if use tooltip, you need to install css
+import "assign-holiday/dist/assign-holiday.css"; // if use tooltip, you need to import css
 
 fetch('https://holidays-jp.github.io/api/v1/date.json')
       .then(res => res.json())
@@ -101,11 +103,11 @@ $(function () {
     '2021-12-06': 'Closed on Monday.',
     '2021-12-13': 'Closed on Monday.',
     '2021-12-20': 'Closed on Monday.',
-    '2021-12-27': 'Closed on Monday.',
     '2021-12-24': {
       title: 'Closed for Christmas Eve.',
-      className: 'is-christmas-eve', // This classname is only applicable on 2021-12-25.
-    }
+      className: 'is-christmas-eve', // This classname is only applicable on 2021-12-24.
+    },
+    '2021-12-27': 'Closed on Monday.',
   })
 });
 ```
