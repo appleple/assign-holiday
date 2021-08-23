@@ -46,15 +46,15 @@ export default class AssignHoliday {
             const regex = new RegExp(`${this.option.weekLabels.join('|')}`);
             this.addHolidayLabel(HolidayLabelElem, regex);
           }
+
+          const tooltipElem = getTargetElement(target, this.option.holidayTooltipClass);
+          if (tooltipElem) {
+            this.addTooltip(tooltipElem, title);
+          }
         }
 
         if (this.option.today && this.isToday(date)) {
           addClass(target, this.option.todayClass);
-        }
-
-        const tooltipElem = getTargetElement(target, this.option.holidayTooltipClass);
-        if (tooltipElem) {
-          this.addTooltip(tooltipElem, title);
         }
       });
     });
