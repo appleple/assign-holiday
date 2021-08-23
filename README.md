@@ -40,7 +40,7 @@ yarn add assign-holiday
 #### Basic Usage
 
 ```html
-<table class="js-assgin-holiday">
+<table class="js-assign-holiday">
   <tbody>
     <tr data-assign-holiday-date="2021-12-01">
       <th>1<span class="assign-holiday-week-label">Wed.</span></th>
@@ -63,7 +63,7 @@ yarn add assign-holiday
 ```
 
 ```javascript
-import AssignHoliday from 'assgin-holiday';
+import AssignHoliday from 'assign-holiday';
 import "assign-holiday/dist/assign-holiday.css"; // if use tooltip, you need to import css
 
 const assignHoliday = new AssignHoliday('.js-assign-holiday');
@@ -81,13 +81,13 @@ assignHoliday.run({
 
 #### Example of national holidays
 ```javascript
-import AssignHoliday from 'assgin-holiday';
+import AssignHoliday from 'assign-holiday';
 import "assign-holiday/dist/assign-holiday.css"; // if use tooltip, you need to import css
 
 fetch('https://holidays-jp.github.io/api/v1/date.json')
       .then(res => res.json())
       .then(data => {
-        new AssignHoliday('.js-assgin-public-holiday').run(data);
+        new AssignHoliday('.js-assign-public-holiday').run(data);
       })
 ```
 
@@ -97,7 +97,7 @@ fetch('https://holidays-jp.github.io/api/v1/date.json')
 
 ```javascript
 $(function () {
-  const assignHoliday = $('.js-assgin-holiday').assignHoliday();
+  const assignHoliday = $('.js-assign-holiday').assignHoliday();
 
   assignHoliday.run({
     '2021-12-06': 'Closed on Monday.',
@@ -116,7 +116,7 @@ $(function () {
 ```javascript
 $.get('https://holidays-jp.github.io/api/v1/date.json')
   .then((data) => {
-    $('.js-assgin-holiday').assignHoliday().run(data);
+    $('.js-assign-holiday').assignHoliday().run(data);
   })
 ```
 ## Options
@@ -126,6 +126,7 @@ $.get('https://holidays-jp.github.io/api/v1/date.json')
 | dateAttribute | AttributeName to be set the date. | 'data-assign-holiday-date' |
 | holidayTitleClass | Classname to be added to the element to which the title will be added. | 'assign-holiday-title' |
 | holidayTitleTag | Tagname to be set to holiday title when adding holiday title. | '' |
+| holidayTitleAppendClass | classname to be added to the holiday title tag. | '' |
 | today | Whether to add a class to today's date element. | false |
 | todayClass | Classname to be added to today's date element. | 'assign-holiday-today' |
 | addHolidayLabel | Whether to add holiday label. | true |
