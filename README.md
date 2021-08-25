@@ -1,7 +1,8 @@
 # Assign Holiday
 [![CICD](https://github.com/appleple/assign-holiday/actions/workflows/release.yml/badge.svg)](https://github.com/appleple/assign-holiday/actions/workflows/release.yml)
 [![npm version](https://badge.fury.io/js/assign-holiday.svg)](https://badge.fury.io/js/assign-holiday)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Simple Liblary to added class Attribute to holiday element in a calendar
 
 
@@ -87,7 +88,7 @@ import "assign-holiday/dist/assign-holiday.css"; // if use tooltip, you need to 
 fetch('https://holidays-jp.github.io/api/v1/date.json')
       .then(res => res.json())
       .then(data => {
-        new AssignHoliday('.js-assign-public-holiday').run(data);
+        new AssignHoliday('.js-assign-holiday').run(data);
       })
 ```
 
