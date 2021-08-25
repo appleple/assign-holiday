@@ -99,6 +99,8 @@ export default class AssignHoliday {
   }
 
   addTooltip(tooltipElem, text) {
+    tooltipElem.style.position = 'relative';
+    tooltipElem.style.cursor = 'pointer';
     tooltipElem.insertAdjacentHTML('afterbegin', `<span class="${this.option.holidayTooltipTextClass}">${text}</span>`);
   }
 }
