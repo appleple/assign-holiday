@@ -10,7 +10,6 @@ const defaultOption = {
   holidayTitleAppendClass: '',
   today: false,
   todayClass: 'assign-holiday-today',
-  addHolidayLabel: true,
   holidayLabel: 'Hol.',
   holidayLabelPosition: 'replace',
   weekLabelClass: 'assign-holiday-week-label',
@@ -35,15 +34,14 @@ export default class AssignHoliday {
         const { today } = this.option;
         const date = target.getAttribute(dateAttribute);
         const isHoliday = this.isHoliday(date);
-        const title = sanitize(typeof isHoliday[1] === 'object' ? isHoliday[1].title : isHoliday[1]);
         if (isHoliday[0]) {
           const {
             holidayClass,
             holidayTitleClass,
             weekLabelClass,
-            addHolidayLabel,
             holidayTooltipClass
           } = this.option;
+          const title = sanitize(typeof isHoliday[1] === 'object' ? isHoliday[1].title : isHoliday[1]);
           const className = typeof isHoliday[1] === 'object' && isHoliday[1].className ? isHoliday[1].className : holidayClass;
           addClass(target, sanitize(className));
           const titleElem = getTargetElement(target, holidayTitleClass);
@@ -52,7 +50,7 @@ export default class AssignHoliday {
           }
 
           const HolidayLabelElem = getTargetElement(target, weekLabelClass);
-          if (addHolidayLabel && HolidayLabelElem) {
+          if (HolidayLabelElem) {
             const { weekLabels } = this.option;
             const regex = new RegExp(`${weekLabels.join('|')}`);
             this.addHolidayLabel(HolidayLabelElem, regex);
