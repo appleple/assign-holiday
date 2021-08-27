@@ -26,16 +26,5 @@ export const formatDate = (date, format) => {
   return format;
 };
 
-export const insertAdjacentString = (target, position, index, str) => {
-  if (position === 'before') {
-    return target.slice(0, index) + str + target.slice(index);
-  }
-  if (position === 'after') {
-    return target.slice(0, index + 1) + str + target.slice(index + 1);
-  }
-
-  return false;
-};
-
 export const sanitize = (str) => str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
   .replace(/'/g, '&#39;');

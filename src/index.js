@@ -1,5 +1,5 @@
 import {
-  addClass, getTargetElement, formatDate, insertAdjacentString, sanitize
+  addClass, getTargetElement, formatDate, sanitize
 } from './util';
 
 const defaultOption = {
@@ -52,7 +52,7 @@ export default class AssignHoliday {
           const HolidayLabelElem = getTargetElement(target, weekLabelClass);
           if (HolidayLabelElem) {
             const { weekLabels } = this.option;
-            const regex = new RegExp(`${weekLabels.join('|')}`);
+            const regex = new RegExp(`(${weekLabels.join('|')})`);
             this.addHolidayLabel(HolidayLabelElem, regex);
           }
 
@@ -99,10 +99,10 @@ export default class AssignHoliday {
         labelElem.textContent = labelElem.textContent.replace(regex, holidayLabel);
         break;
       case 'before':
+        labelElem.textContent = labelElem.textContent.replace(regex, `${holidayLabel}$1`);
+        break;
       case 'after':
-        const i = labelElem.textContent.search(regex);
-        if (i === -1) return;
-        labelElem.textContent = insertAdjacentString(labelElem.textContent, holidayLabelPosition, i, holidayLabel);
+        labelElem.textContent = labelElem.textContent.replace(regex, `$1${holidayLabel}`);
         break;
       default:
         break;
