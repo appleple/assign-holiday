@@ -21,6 +21,14 @@ jobs:
           node-version: 14.x
           registry-url: 'https://registry.npmjs.org'
 
+      # Install dependencies
+      - name: install-dependencies
+        run: npm ci
+
+      # Run test
+      - name: test
+        run: npm test
+
       # Get current package version
       - name: current-package-version
         run: node -p -e '`CURRENT_PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
