@@ -130,7 +130,6 @@ $.get('https://holidays-jp.github.io/api/v1/date.json')
 | holidayTitleAppendClass | classname to be added to the holiday title tag. | '' |
 | today | Whether to add a class to today's date element. | false |
 | todayClass | Classname to be added to today's date element. | 'assign-holiday-today' |
-| addHolidayLabel | Whether to add holiday label. | true |
 | holidayLabel | Label to be replaced or inserted with labels of days of the week set in weekLabel. | 'Hol.' |
 | holidayLabelPosition | Position to insert the holiday label into the label for the set day of the week. You can select 'replace', 'before' or 'after'. | 'replace' |
 | weekLabelClass | Classname to be added to the element to which the holiday label will be replaced or inserted. | 'assign-holiday-week-label' |
