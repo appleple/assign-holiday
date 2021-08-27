@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+  <div class="container-calendar">
+    <h4 id="monthAndYear"></h4>
+    <div class="button-container-calendar">
+      <button id="previous" onclick="previous()">‹</button>
+      <button id="next" onclick="next()">›</button>
+    </div>
+
+    <table class="table-calendar js-assign-holiday" id="calendar" data-lang="ja">
+      <thead id="thead-month"></thead>
+      <tbody id="calendar-body"></tbody>
+    </table>
+
+    <div class="footer-container-calendar">
+      <label for="month">Date setting：</label>
+      <select id="month" onchange="jump()">
+        <option value=0>January</option>
+        <option value=1>February</option>
+        <option value=2>March</option>
+        <option value=3>April</option>
+        <option value=4>May</option>
+        <option value=5>June</option>
+        <option value=6>July</option>
+        <option value=7>August</option>
+        <option value=8>September</option>
+        <option value=9>October</option>
+        <option value=10>November</option>
+        <option value=11>December</option>
+      </select>
+      <select id="year" onchange="jump()"></select>
+    </div>
+  </div>
+  <script src="../dist/assign-holiday.js"></script>
+  <script>
+    function generate_year_range(start, end) {
+      var years = "";
+      for (var year = start; year <= end; year++) {
+        years += "<option value='" + year + "'>" + year + "</option>";
+      }
+      return years;
+    }
+
+    var today = new Date('2021-08-01');
+    var currentMonth = today.getMonth();
+    var currentYear = today.getFullYear();
+    var selectYear = document.getElementById("year");
+    var selectMonth = document.getElementById("month");
+
+    var createYear = generate_year_range(1970, 2200);
+
+    document.getElementById("year").innerHTML = createYear;
+
+    var calendar = document.getElementById("calendar");
+    var lang = calendar.getAttribute('data-lang');
+
+    var months = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
+    var days = ["Sun.", "Mon.", "Tue", "Wed.", "Tue.", "Fri.", "Sat."];
+
+    var dayHeader = "<tr>";
+    for (day in days) {
+      dayHeader += "<th data-days='" + days[day] + "'>" + days[day] + "</th>";
+    }
+    dayHeader += "</tr>";
+
+    document.getElementById("thead-month").innerHTML = dayHeader;
+
+    monthAndYear = document.getElementById("monthAndYear");
+    showCalendar(currentMonth, currentYear);
+
+    function next() {
+      currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
+      currentMonth = (currentMonth + 1) % 12;
+      showCalendar(currentMonth, currentYear);
+    }
+
+    function previous() {
+      currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
+      currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+      showCalendar(currentMonth, currentYear);
+    }
+
+    function jump() {
+      currentYear = parseInt(selectYear.value);
+      currentMonth = parseInt(selectMonth.value);
+      showCalendar(currentMonth, currentYear);
+    }
+
+    function showCalendar(month, year) {
+
+      var firstDay = (new Date(year, month)).getDay();
+
+      tbl = document.getElementById("calendar-body");
+
+      tbl.innerHTML = "";
+
+      monthAndYear.innerHTML = months[month] + " " + year;
+      selectYear.value = year;
+      selectMonth.value = month;
+
+      // creating all cells
+      var date = 1;
+      for (var i = 0; i < 6; i++) {
+        var row = document.createElement("tr");
+
+        for (var j = 0; j < 7; j++) {
+          if (i === 0 && j < firstDay) {
+            cell = document.createElement("td");
+            cellText = document.createTextNode("");
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+          } else if (date > daysInMonth(month, year)) {
+            break;
+          } else {
+            cell = document.createElement("td");
+            cell.setAttribute("data-date", `${year}-${(month + 1).toString(10).padStart(2, '0')}-${date.toString(10).padStart(2, '0')}`);
+            cell.setAttribute("data-month_name", months[month]);
+            cell.innerHTML = "<span>" + date + "</span>";
+
+            if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
+            }
+            row.appendChild(cell);
+            date++;
+          }
+        }
+
+        tbl.appendChild(row);
+      }
+
+    }
+
+    function daysInMonth(iMonth, iYear) {
+      return 32 - new Date(iYear, iMonth, 32).getDate();
+    }
+
+    const assignHoliday = new AssignHoliday('.js-assign-holiday', {dateAttribute: 'data-date'});
+    assignHoliday.run({
+      '2021-07-08': 'Closed',
+      '2021-09-08': 'Closed',
+    })
+
+    document.getElementById('next').addEventListener('click', () => {
+      assignHoliday.run();
+    })
+    document.getElementById('previous').addEventListener('click', () => {
+      assignHoliday.run();
+    })
+  </script>
+</body>
+
+</html>

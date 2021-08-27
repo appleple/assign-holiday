@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="../dist/assign-holiday.css">
+  <script src="../dist/assign-holiday.js"></script>
+</head>
+<body>
+  <div class="test">
+    <div data-option-date="2021-08-01">
+      <span class="option-week-label">Sun.</span>
+      <p class="option-title"></p>
+      <div class="option-tooltip"></div>
+    </div>
+    <div data-option-date="2021-08-02" class="option-holiday">
+      <span class="option-week-label">Mon.</span>
+      <p class="option-title"><div class="option-title-append">Closed on Monday.</div></p>
+      <div class="option-tooltip" style="position: relative; cursor: pointer;">
+        <span class="option-tooltip-text">Closed on Monday.</span>
+      </div>
+    </div>
+    <div data-option-date="2021-08-03">
+      <span class="option-week-label">Tue.</span>
+      <p class="option-title"></p>
+      <div class="option-tooltip"></div>
+    </div>
+    <div data-option-date="2021-08-04" class="is-closed">
+      <span class="option-week-label">Wed.Option</span>
+      <p class="option-title"><div class="option-title-append">Closed</div></p>
+      <div class="option-tooltip" style="position: relative; cursor: pointer;">
+        <span class="option-tooltip-text">Closed</span>
+      </div>
+    </div>
+    <div data-option-date="2021-08-05">
+      <span class="option-week-label">Thu.</span>
+      <p class="option-title"></p>
+      <div class="option-tooltip"></div>
+    </div>
+  </div>
+
+  <div class="result js-assign-holiday">
+    <div data-option-date="2021-08-01">
+      <span class="option-week-label">Sun.</span>
+      <p class="option-title"></p>
+      <div class="option-tooltip"></div>
+    </div>
+    <div data-option-date="2021-08-02">
+      <span class="option-week-label">Mon.</span>
+      <p class="option-title"></p>
+      <div class="option-tooltip"></div>
+    </div>
+    <div data-option-date="2021-08-03">
+      <span class="option-week-label">Tue.</span>
+      <p class="option-title"></p>
+      <div class="option-tooltip"></div>
+    </div>
+    <div data-option-date="2021-08-04">
+      <span class="option-week-label">Wed.</span>
+      <p class="option-title"></p>
+      <div class="option-tooltip"></div>
+    </div>
+    <div data-option-date="2021-08-05">
+      <span class="option-week-label">Thu.</span>
+      <p class="option-title"></p>
+      <div class="option-tooltip"></div>
+    </div>
+  </div>
+  <script>
+    const option = {
+      holidayClass: 'option-holiday',
+      dateAttribute: 'data-option-date',
+      holidayTitleClass: 'option-title',
+      holidayTitleTag: 'div',
+      holidayTitleAppendClass: 'option-title-append',
+      holidayLabel: 'Option',
+      holidayLabelPosition: 'after',
+      weekLabelClass: 'option-week-label',
+      weekLabels: ['Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'],
+      holidayTooltipClass: 'option-tooltip',
+      holidayTooltipTextClass: 'option-tooltip-text'
+    }
+    const assignHoliday = new AssignHoliday('.js-assign-holiday', option);
+    assignHoliday.run({
+      '2021-08-02': 'Closed on Monday.',
+      '2021-08-04': {
+        title: 'Closed',
+        className: 'is-closed',
+      },
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="../dist/assign-holiday.css">
+  <script src="../dist/assign-holiday.js"></script>
+</head>
+<body>
+  <div class="test">
+    <div data-assign-holiday-date="2021-08-01">
+      <span class="assign-holiday-week-label">Sun.</span>
+      <p class="assign-holiday-title"></p>
+      <div class="assign-holiday-tooltip"></div>
+    </div>
+    <div data-assign-holiday-date="2021-08-02" class="assign-holiday">
+      <span class="assign-holiday-week-label">Hol.</span>
+      <p class="assign-holiday-title">Closed on Monday.</p>
+      <div class="assign-holiday-tooltip" style="position: relative; cursor: pointer;">
+        <span class="assign-holiday-tooltip-text">Closed on Monday.</span>
+      </div>
+    </div>
+    <div data-assign-holiday-date="2021-08-03">
+      <span class="assign-holiday-week-label">Tue.</span>
+      <p class="assign-holiday-title"></p>
+      <div class="assign-holiday-tooltip"></div>
+    </div>
+    <div data-assign-holiday-date="2021-08-04" class="is-closed">
+      <span class="assign-holiday-week-label">Hol.</span>
+      <p class="assign-holiday-title">Closed</p>
+      <div class="assign-holiday-tooltip" style="position: relative; cursor: pointer;">
+        <span class="assign-holiday-tooltip-text">Closed</span>
+      </div>
+    </div>
+    <div data-assign-holiday-date="2021-08-05">
+      <span class="assign-holiday-week-label">Thu.</span>
+      <p class="assign-holiday-title"></p>
+      <div class="assign-holiday-tooltip"></div>
+    </div>
+  </div>
+
+  <div class="result js-assign-holiday">
+    <div data-assign-holiday-date="2021-08-01">
+      <span class="assign-holiday-week-label">Sun.</span>
+      <p class="assign-holiday-title"></p>
+      <div class="assign-holiday-tooltip"></div>
+    </div>
+    <div data-assign-holiday-date="2021-08-02">
+      <span class="assign-holiday-week-label">Mon.</span>
+      <p class="assign-holiday-title"></p>
+      <div class="assign-holiday-tooltip"></div>
+    </div>
+    <div data-assign-holiday-date="2021-08-03">
+      <span class="assign-holiday-week-label">Tue.</span>
+      <p class="assign-holiday-title"></p>
+      <div class="assign-holiday-tooltip"></div>
+    </div>
+    <div data-assign-holiday-date="2021-08-04">
+      <span class="assign-holiday-week-label">Wed.</span>
+      <p class="assign-holiday-title"></p>
+      <div class="assign-holiday-tooltip"></div>
+    </div>
+    <div data-assign-holiday-date="2021-08-05">
+      <span class="assign-holiday-week-label">Thu.</span>
+      <p class="assign-holiday-title"></p>
+      <div class="assign-holiday-tooltip"></div>
+    </div>
+  </div>
+  <script>
+    const assignHoliday = new AssignHoliday('.js-assign-holiday');
+    assignHoliday.run({
+      '2021-08-02': 'Closed on Monday.',
+      '2021-08-04': {
+        title: 'Closed',
+        className: 'is-closed',
+      },
+    })
+  </script>
+</body>
+</html>

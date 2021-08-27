@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+  <div class="test">
+    <div data-assign-holiday-date="2021-08-01" class="assign-holiday-title"></div>
+    <div data-assign-holiday-date="2021-08-02" class="assign-holiday-title assign-holiday">
+      Closed on Monday.
+    </div>
+    <div data-assign-holiday-date="2021-08-03" class="assign-holiday-title"></div>
+    <div data-assign-holiday-date="2021-08-04" class="assign-holiday-title is-closed">Closed</div>
+    <div data-assign-holiday-date="2021-08-05" class="assign-holiday-title">
+    </div>
+  </div>
+
+  <div class="result js-assign-holiday">
+    <div data-assign-holiday-date="2021-08-01" class="assign-holiday-title"></div>
+    <div data-assign-holiday-date="2021-08-02" class="assign-holiday-title"></div>
+    <div data-assign-holiday-date="2021-08-03" class="assign-holiday-title"></div>
+    <div data-assign-holiday-date="2021-08-04" class="assign-holiday-title"></div>
+    <div data-assign-holiday-date="2021-08-05" class="assign-holiday-title"></div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="../dist/jquery-assign-holiday.js"></script>
+  <script>
+    $(function () {
+      $('.js-assign-holiday').assignHoliday().run({
+        '2021-08-02': 'Closed on Monday.',
+        '2021-08-04': {
+          title: 'Closed',
+          className: 'is-closed',
+        },
+      })
+    });
+  </script>
+</body>
+</html>
