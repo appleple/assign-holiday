@@ -1,7 +1,15 @@
+<style>
+  img[alt="Logo of AssignHoliday"] {
+    width: 150px
+  }
+</style>
+
 # Assign Holiday
 [![CICD](https://github.com/appleple/assign-holiday/actions/workflows/release.yml/badge.svg)](https://github.com/appleple/assign-holiday/actions/workflows/release.yml)
 [![npm version](https://badge.fury.io/js/assign-holiday.svg)](https://badge.fury.io/js/assign-holiday)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+![Logo of AssignHoliday](/docs/images/logo-assignholiday.png)
 
 Simple Liblary to added class Attribute to holiday element in a calendar
 
@@ -74,7 +82,7 @@ assignHoliday.run({
   '2021-12-20': 'Closed on Monday.',
   '2021-12-24': {
     title: 'Closed for Christmas Eve.',
-    className: 'is-christmas-eve', // This classname is only applicable on 2021-12-24.
+    className: 'is-christmas-eve', // className is only applicable on 2021-12-24.
   },
   '2021-12-27': 'Closed on Monday.',
 })
@@ -106,7 +114,7 @@ $(function () {
     '2021-12-20': 'Closed on Monday.',
     '2021-12-24': {
       title: 'Closed for Christmas Eve.',
-      className: 'is-christmas-eve', // This classname is only applicable on 2021-12-24.
+      className: 'is-christmas-eve', // className is only applicable on 2021-12-24.
     },
     '2021-12-27': 'Closed on Monday.',
   })
