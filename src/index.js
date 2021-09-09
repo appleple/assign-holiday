@@ -27,10 +27,10 @@ export default class AssignHoliday {
 
   run(data) {
     this.data = data || this.data;
-    [].map.call(this.elements, (element) => {
+    [].forEach.call(this.elements, (element) => {
       const { dateAttribute } = this.option;
       const targets = element.querySelectorAll(`[${dateAttribute}]`);
-      [].map.call(targets, (target) => {
+      [].forEach.call(targets, (target) => {
         const { today } = this.option;
         const date = target.getAttribute(dateAttribute);
         const isHoliday = this.isHoliday(date);
