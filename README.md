@@ -1,17 +1,11 @@
-<style>
-  img[alt="Logo of AssignHoliday"] {
-    width: 150px
-  }
-</style>
-
 # Assign Holiday
 [![CICD](https://github.com/appleple/assign-holiday/actions/workflows/release.yml/badge.svg)](https://github.com/appleple/assign-holiday/actions/workflows/release.yml)
 [![npm version](https://badge.fury.io/js/assign-holiday.svg)](https://badge.fury.io/js/assign-holiday)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![Logo of AssignHoliday](/docs/images/logo-assignholiday.png)
+<img src="/docs/images/logo-assignholiday.png" alt="Logo of AssignHoliday" width="150">
 
-Simple Liblary to added class Attribute to holiday element in a calendar
+Simple library for adding class attributes to holiday elements in a calendar
 
 
 ## Installation
